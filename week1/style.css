@@ -27,14 +27,6 @@
   }
   
   /**
-   * Render the `main` element consistently in IE.
-   */
-  
-  main {
-    display: block;
-  }
-  
-  /**
    * Correct the font size and margin on `h1` elements within `section` and
    * `article` contexts in Chrome, Firefox, and Safari.
    */
@@ -72,14 +64,6 @@
      ========================================================================== */
   
   /**
-   * Remove the gray background on active links in IE 10.
-   */
-  
-  a {
-    background-color: transparent;
-  }
-  
-  /**
    * 1. Remove the bottom border in Chrome 57-
    * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
    */
@@ -111,46 +95,6 @@
     font-size: 1em; /* 2 */
   }
   
-  /**
-   * Add the correct font size in all browsers.
-   */
-  
-  small {
-    font-size: 80%;
-  }
-  
-  /**
-   * Prevent `sub` and `sup` elements from affecting the line height in
-   * all browsers.
-   */
-  
-  sub,
-  sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
-  }
-  
-  sub {
-    bottom: -0.25em;
-  }
-  
-  sup {
-    top: -0.5em;
-  }
-  
-  /* Embedded content
-     ========================================================================== */
-  
-  /**
-   * Remove the border on images inside links in IE 10.
-   */
-  
-  img {
-    border-style: none;
-  }
-  
   /* Forms
      ========================================================================== */
   
@@ -168,16 +112,6 @@
     font-size: 100%; /* 1 */
     line-height: 1.15; /* 1 */
     margin: 0; /* 2 */
-  }
-  
-  /**
-   * Show the overflow in IE.
-   * 1. Show the overflow in Edge.
-   */
-  
-  button,
-  input { /* 1 */
-    overflow: visible;
   }
   
   /**
@@ -256,24 +190,6 @@
     vertical-align: baseline;
   }
   
-  /**
-   * Remove the default vertical scrollbar in IE 10+.
-   */
-  
-  textarea {
-    overflow: auto;
-  }
-  
-  /**
-   * 1. Add the correct box sizing in IE 10.
-   * 2. Remove the padding in IE 10.
-   */
-  
-  [type="checkbox"],
-  [type="radio"] {
-    box-sizing: border-box; /* 1 */
-    padding: 0; /* 2 */
-  }
   
   /**
    * Correct the cursor style of increment and decrement buttons in Chrome.
@@ -311,50 +227,13 @@
     -webkit-appearance: button; /* 1 */
     font: inherit; /* 2 */
   }
-  
-  /* Interactive
-     ========================================================================== */
-  
-  /*
-   * Add the correct display in Edge, IE 10+, and Firefox.
-   */
-  
-  details {
-    display: block;
-  }
-  
-  /*
-   * Add the correct display in all browsers.
-   */
-  
-  summary {
-    display: list-item;
-  }
-  
-  /* Misc
-     ========================================================================== */
-  
-  /**
-   * Add the correct display in IE 10+.
-   */
-  
-  template {
-    display: none;
-  }
-  
-  /**
-   * Add the correct display in IE 10.
-   */
-  
-  [hidden] {
-    display: none;
-  }
+
 
   header{
     width: 100%;
     height : 50px;
     background-color:black;
-    font-size: 2vh;
+    font-size: 27px;
     font-weight: bold;
     text-align: center;
     padding-top: 20px;
@@ -383,9 +262,8 @@
 article{
   display: flex;
   width: 55%;
-  height: 1000px;
+  height: 2000px;
   border: 1px solid black;
-  background-color: red;
   margin: 20px;
   float: left;
 }
@@ -394,7 +272,6 @@ section{
   width: 20%;
   height: 300px;
   border: 1px solid black;
-  background-color: skyblue;
   margin:20px 0 0 20px;
   float: left;
 }
