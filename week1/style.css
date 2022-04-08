@@ -8,7 +8,7 @@
     box-sizing: border-box;
     margin: 0;
     color :white;
-    transform : rotate(0.04deg); /* 윈도우 폰트 안티얼라이싱*/
+    transform : rotate(0.04deg); /* 윈도우os 폰트 안티얼라이싱*/
   }
 
   header{
@@ -48,6 +48,7 @@ main{
   display:flex;
   justify-content: space-around;
   padding: 5px 10px 0 10px;
+  margin-top: 5px;
   gap:10px; 
 }
 
@@ -76,16 +77,20 @@ main{
 }
 
 .burger__image{
-  width: 100px;
-  height: 100px;
-  margin: 10px 0 0 20px;
+  width: 90px;
+  height: 90px;
+  margin: 13px 5px 0 20px;
   border-radius: 10px;
 }
 
 .burger__content{
-  margin-top: 8px;
+  margin: 5px 10px 0 0;
   flex-grow: 1;
   text-align: center;
+}
+
+.burger__mention{
+  font-size:85%;
 }
 
 .burger__price{
@@ -110,7 +115,7 @@ main{
   align-items: center;
 }
 
-.cart__btn--group button{
+.cart__btn{
   border: none;
   border-radius: 10px;
   width:85%;
@@ -173,12 +178,25 @@ main{
     }
 }  
 
+.brand__logo:hover, .cart__btn:hover, .btn__floating:hover{
+  transform: scale(1.05);
+  transition: all 1s;
+  cursor: pointer;
+}
+
+.burger__card:hover{
+  background-color: black;
+  color: white;
+  transform: scale(1.05);
+  transition: all 1s;
+  cursor: pointer;
+}
+
 @media screen and (max-width:992px){
   .burger{
     grid-template-columns: 1fr;
     grid-template-rows: 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px;
     grid-gap: 20px;
-    font-size: 80%;
   }
 
 }  
