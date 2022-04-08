@@ -8,9 +8,11 @@
     box-sizing: border-box;
     margin: 0;
     color :white;
+    transform : rotate(0.04deg); /* 윈도우 폰트 안티얼라이싱*/
   }
 
   header{
+    position: relative;
     width: 100%;
     height : 60px;
     background-color:black;
@@ -18,7 +20,12 @@
     padding:1px;
     margin-bottom: 20px;
 
-  }
+}
+
+.header__brandbox{
+  position: absolute;
+  left: -300px;
+}
 
 main{
   display: flex;
@@ -29,20 +36,25 @@ main{
   border-radius: 10px;
   background-color:black;
   margin: 0 15px 0 15px;
-  flex-grow: 1;
-  flex-direction: column;
   text-align: center;
+  flex-direction: column;
 }
 
-.brand{
+.brand__content{
   height: 140px;
 }
 
-.brand__select{
-  height:25px;
-  background-color:white;
-  color:black;
-  padding-top: 10px;
+.brand__logo--group{
+  display:flex;
+  justify-content: space-around;
+  padding: 5px 10px 0 10px;
+  gap:10px; 
+}
+
+.brand__logo{
+  width:60px;
+  height:60px;
+  border-radius:50%;
 }
 
 .burger{
@@ -76,8 +88,13 @@ main{
   text-align: center;
 }
 
+.burger__price{
+  font-size:19px;
+  font-weight: bold;
+}
+
 .cart{
-  flex-grow: 1;
+  width: 300px;
   height: 300px;
   position: sticky;
   top: 20px;
@@ -104,13 +121,12 @@ main{
 
 .btn__floating {
   display: none;
-	position:fixed;
+	position:sticky;
 	width:60px;
 	height:60px;
-	bottom:20px;
-	right:20px;
+  bottom: 20px;
+	left:82%;
 	background-color:black;
-	color:#FFF;
 	border-radius:50px;
 	text-align:center;
 	box-shadow: 2px 2px 3px #999;
@@ -121,7 +137,7 @@ main{
   padding-top: 15px;
 }
 
-.btn__flating--sum{
+.btn__floating--sum{
   position:absolute;
   width:15px;
 	height:15px;
@@ -136,7 +152,7 @@ main{
 
 
 @media screen and (max-width:1200px){
-    .brand{
+    .brand__content{
       display:none;
     }
     .burger{
@@ -144,21 +160,34 @@ main{
     }
 
     .cart{
-      flex-grow: 3;
+      flex-grow: 1;
+    }
+    .header__brandbox{
+      transform: translateX(320px);
+      transition: all 1s;
+    }
+    .brand__logo{
+      width:40px;
+      height: 40px;
+      margin: 10px 0 0 5px;
     }
 }  
 
 @media screen and (max-width:992px){
   .burger{
-
     grid-template-columns: 1fr;
     grid-template-rows: 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px;
     grid-gap: 20px;
-  
+    font-size: 80%;
   }
+
 }  
 
 @media screen and (max-width:600px){
+  main {
+    display: block;
+  }
+  
   .cart{
     display:none;
   }
@@ -168,6 +197,9 @@ main{
   }
 
   .btn__floating{
-    display:block;
+    display: block;
+  }
+  .header__brandbox{
+    display: none;
   }
 }

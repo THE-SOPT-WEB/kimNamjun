@@ -13,13 +13,25 @@
   </head>
   <body>
     <header>
+      <div class="header__brandbox">
+        <img class='brand__logo' src="data:image/png;base64,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" alt="맥도날드">
+        <img class='brand__logo' src="https://m.subway.co.kr/images/franchise/img_barnd_comp01.jpg" alt="서브웨이">
+        <img class='brand__logo' src="https://mblogthumb-phinf.pstatic.net/20160427_256/ppanppane_1461740417920Ka4kd_PNG/%B7%D4%B5%A5%B8%AE%BE%C6_%B7%CE%B0%ED_%282%29.png?type=w2" alt="롯데리아">
+        <img class='brand__logo' src="https://blog.kakaocdn.net/dn/bJsBCT/btqwTxzklpN/nf9zv5kxH99VyHK47rqeVK/img.jpg" alt="kfc">     
+      </div>
       <h1>Hamsinsa.</h1>
     </header>
     <main>
-      <div class="box__design brand">
-        <h2>다른거먹자</h2>
-        <div class="brand__select blackbox">맥도날드</div>
-        <div class="brand__select">롯데리아</div>        
+      <div class="box__design brand__content">
+        <div class="brand__title">
+          <h2>다른 브랜드</h2>
+        </div>
+        <div class="brand__logo--group">
+          <img class='brand__logo' src="data:image/png;base64,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" alt="맥도날드">
+          <img class='brand__logo' src="https://m.subway.co.kr/images/franchise/img_barnd_comp01.jpg" alt="서브웨이">
+          <img class='brand__logo' src="https://mblogthumb-phinf.pstatic.net/20160427_256/ppanppane_1461740417920Ka4kd_PNG/%B7%D4%B5%A5%B8%AE%BE%C6_%B7%CE%B0%ED_%282%29.png?type=w2" alt="롯데리아">
+          <img class='brand__logo' src="https://blog.kakaocdn.net/dn/bJsBCT/btqwTxzklpN/nf9zv5kxH99VyHK47rqeVK/img.jpg" alt="kfc">     
+        </div>
       </div>
       <section class="burger">
         <article class="burger__card">
@@ -121,7 +133,7 @@
         <article class="burger__card">
           <img class='burger__image' src="./burger.jpg" alt="버거사진">
           <div class="burger__content">
-            <h2 class="burger__name">스파이시 치폴레 프라이</h2>
+            <h2 class="burger__name">스파이시 프라이</h2>
             <p class="burger__price">$5.5</p>
             <p class="burger__mention">어머 벌써 정신없이 달려왔어</p>
           </div>
@@ -131,7 +143,7 @@
           <div class="burger__content">
             <h2 class="burger__name">과카몰리 프라이</h2>
             <p class="burger__price">$5.5</p>
-            <p class="burger__mention">스피드업~어제로 돌아가는 시곌보다가</p>
+            <p class="burger__mention">스피드업~어제로</p>
           </div>
         </article>
         <article class="burger__card">
@@ -169,7 +181,7 @@
       </section>
       <div class="btn__floating"><!--플로팅버튼(FloatingButton)-->
         <i class="fa-solid fa-cart-shopping fa-2x">
-          <p class="btn__flating--sum">0</p>
+          <p class="btn__floating--sum">0</p>
         </i>
       </div> 
     </main>
