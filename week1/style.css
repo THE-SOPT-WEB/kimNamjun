@@ -17,6 +17,7 @@
     text-align: center;
     padding:1px;
     margin-bottom: 20px;
+
   }
 
 main{
@@ -30,11 +31,11 @@ main{
   margin: 0 15px 0 15px;
   flex-grow: 1;
   flex-direction: column;
+  text-align: center;
 }
 
 .brand{
   height: 140px;
-  text-align: center;
 }
 
 .brand__select{
@@ -66,6 +67,7 @@ main{
   width: 100px;
   height: 100px;
   margin: 10px 0 0 20px;
+  border-radius: 10px;
 }
 
 .burger__content{
@@ -77,5 +79,44 @@ main{
 .cart{
   flex-grow: 1;
   height: 300px;
+  position: sticky;
+  top: 20px;
 }
 
+.cart__btn--group{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cart__btn--group button{
+  border: none;
+  border-radius: 10px;
+  width:85%;
+  height: 50px;
+  margin: 5px 0 6px 0;
+  font-size:20px;
+}
+
+@media screen and (max-width:1200px){
+    .brand{
+      display:none;
+    }
+    .burger{
+      margin-left: 15px;
+    }
+
+    .cart{
+      flex-grow: 3;
+    }
+}  
+
+@media screen and (max-width:992px){
+  .burger{
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px;
+    grid-gap: 20px;
+  
+  }
+}  
