@@ -38,11 +38,12 @@ function initGame({score, answer, image}){
   image.src = quizList[currentStep].src;
 }
 
-function showModal(modalContent){
+function showModal(modalContent, keepOpen){
   const modal = $('.modal');
   const modalBody = $('p.modal__body');
-  modalBody.innerText = modalContent;
+  modalBody.innerHTML = modalContent;
   modal.classList.remove('hide');
+  if (keepOpen) return;
   setTimeout(()=>{
     modal.classList.add('hide');
   }, 500);
@@ -51,6 +52,13 @@ function showModal(modalContent){
 function goNextStep(score, image){
   currentStep++;
   score.innerText = +score.innerText + 1;
+
+  if(currentStep === quizList.length){
+    showModal(`
+      <a href="/">메인화면으로</a>
+    `, true);
+  }
+
   image.src = quizList[currentStep].src;
 
 }
@@ -61,7 +69,6 @@ function attachEvent({score, answer, image}){
       const currentAnswer = e.target.innerText;
       const realAnswer = quizList[currentStep].answer;
       if (currentAnswer === realAnswer){
-        showModal('나를 알아주다니 고마워!!');
         goNextStep(score, image);
       }else{
         showModal(`나는 ${currentAnswer}이(가) 아니야!!`);
