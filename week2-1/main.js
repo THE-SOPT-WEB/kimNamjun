@@ -6,7 +6,7 @@ import pic5 from "./assets/백지연.png";
 
 const $ = (selector) => document.querySelector(selector);
 
-let currentStep = 0;
+let currentStep;
 
 const quizList = [
   {
@@ -31,4 +31,23 @@ const quizList = [
   },
 ];
 
+function initGame({score, answer, image}){
+  currentStep = 0;
+  score.unnerText = 0;
 
+  image.src = quizList[currentStep].src;
+}
+
+function gameManager(gameInfo) {
+  initGame(gameInfo);
+}
+
+window.onload = () => {
+  gameManager(
+    {
+      score: $('.scoreBoard__score'),
+      answer: $('ul.answer__list'),
+      image: $('.imageBoard > img'),
+    }
+  );
+}
