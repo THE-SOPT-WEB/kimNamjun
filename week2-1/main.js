@@ -45,7 +45,14 @@ function showModal(modalContent){
   modal.classList.remove('hide');
   setTimeout(()=>{
     modal.classList.add('hide');
-  }, 1500);
+  }, 500);
+}
+
+function goNextStep(score, image){
+  currentStep++;
+  score.innerText = +score.innerText + 1;
+  image.src = quizList[currentStep].src;
+
 }
 
 function attachEvent({score, answer, image}){
@@ -55,6 +62,7 @@ function attachEvent({score, answer, image}){
       const realAnswer = quizList[currentStep].answer;
       if (currentAnswer === realAnswer){
         showModal('나를 알아주다니 고마워!!');
+        goNextStep(score, image);
       }else{
         showModal(`나는 ${currentAnswer}이(가) 아니야!!`);
       }
