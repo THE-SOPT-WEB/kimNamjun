@@ -38,11 +38,26 @@ function initGame({score, answer, image}){
   image.src = quizList[currentStep].src;
 }
 
+function showModal(modalContent){
+  const modal = $('.modal');
+  const modalBody = $('p.modal__body');
+  modalBody.innerText = modalContent;
+  modal.classList.remove('hide');
+  setTimeout(()=>{
+    modal.classList.add('hide');
+  }, 1500);
+}
+
 function attachEvent({score, answer, image}){
   answer.addEventListener('click', (e)=> {
     if (e.target instanceof HTMLLIElement){
       const currentAnswer = e.target.innerText;
-      console.log(currentAnswer);
+      const realAnswer = quizList[currentStep].answer;
+      if (currentAnswer === realAnswer){
+        showModal('나를 알아주다니 고마워!!');
+      }else{
+        showModal(`나는 ${currentAnswer}이(가) 아니야!!`);
+      }
     }
   })
 }
