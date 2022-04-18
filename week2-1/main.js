@@ -33,13 +33,23 @@ const quizList = [
 
 function initGame({score, answer, image}){
   currentStep = 0;
-  score.unnerText = 0;
+  score.innerText = 0;
 
   image.src = quizList[currentStep].src;
 }
 
+function attachEvent({score, answer, image}){
+  answer.addEventListener('click', (e)=> {
+    if (e.target instanceof HTMLLIElement){
+      const currentAnswer = e.target.innerText;
+      console.log(currentAnswer);
+    }
+  })
+}
+
 function gameManager(gameInfo) {
   initGame(gameInfo);
+  attachEvent(gameInfo);
 }
 
 window.onload = () => {
