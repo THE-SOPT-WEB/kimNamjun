@@ -48,16 +48,23 @@ function showModal(modalContent, keepOpen){
     modal.classList.add('hide');
   }, 500);
 }
+//
+function showLoadingModal(image){
+    image.onload = () => {
+      showModal(`
+        <href="/">loading</a>     
+      `)
+    }
+}
 
 function goNextStep(score, image){
   currentStep++;
   score.innerText = +score.innerText + 1;
-
-  if(currentStep === quizList.length){
-    showModal(`
-      <a href="/">메인화면으로</a>
-    `, true);
-  }
+  currentStep === quizList.length ? 
+  showModal(`
+    <a href="/">메인화면으로</a>
+  `, true)
+  : showLoadingModal(image)
 
   image.src = quizList[currentStep].src;
 
@@ -81,6 +88,7 @@ function gameManager(gameInfo) {
   initGame(gameInfo);
   attachEvent(gameInfo);
 }
+
 
 window.onload = () => {
   gameManager(
