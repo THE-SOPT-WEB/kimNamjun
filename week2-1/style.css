@@ -59,8 +59,7 @@ section.scoreBoard {
 }
 
 section.scoreBoard.scored {
-  animation: score 0.5s ease-in-out infinite;
-  color: rgb(255, 0, 0);
+  animation: score 0.5s ease-in-out;
 }
 
 div.imageBoard {
@@ -149,13 +148,16 @@ div.imageBoard > img {
 @keyframes score {
   0% {
     transform: scale(1);
+    color: red;
   }
 
   50% {
     transform: scale(1.25);
+    color: red;
   }
 
   100% {
     transform: scale(1.5);
+    color: red;
   }
 }

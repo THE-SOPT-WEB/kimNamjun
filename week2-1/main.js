@@ -59,8 +59,10 @@ function showLoadingModal(image){
 }
 
 function goNextStep(score, image){
+  $('.scoreBoard').classList.remove('scored');
   currentStep++;
   score.innerText = +score.innerText + 1;
+  $('.scoreBoard').classList.add('scored');
   if(currentStep === quizList.length){
     showModal(`
     <a href="/">메인화면으로</a>
