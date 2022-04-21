@@ -31,16 +31,17 @@ const quizList = [
   },
 ];
 
-function initGame({score, answer, image}){
+function initGame({score, image}){
   currentStep = 0;
   score.innerText = 0;
-
   image.src = quizList[currentStep].src;
 }
 
 function showModal(modalContent, keepOpen){
   const modal = $('.modal');
   const modalBody = $('p.modal__body');
+  //심화과제 2번 구현사항
+  modal.addEventListener('click', () => {modal.classList.add('hide')}); 
   modalBody.innerHTML = modalContent;
   modal.classList.remove('hide');
   if (keepOpen) return;
@@ -48,11 +49,11 @@ function showModal(modalContent, keepOpen){
     modal.classList.add('hide');
   }, 500);
 }
-//
+// 심화과제 1번 구현
 function showLoadingModal(image){
     image.onload = () => {
       showModal(`
-        <href="/">loading</a>     
+        로딩이라귯     
       `)
     }
 }
@@ -60,35 +61,38 @@ function showLoadingModal(image){
 function goNextStep(score, image){
   currentStep++;
   score.innerText = +score.innerText + 1;
-  currentStep === quizList.length ? 
-  showModal(`
+  if(currentStep === quizList.length){
+    showModal(`
     <a href="/">메인화면으로</a>
   `, true)
-  : showLoadingModal(image)
-
-  image.src = quizList[currentStep].src;
-
+  } else {
+    showLoadingModal(image);
+    image.src = quizList[currentStep].src;
+  }
 }
 
-function attachEvent({score, answer, image}){
+function attachEvent({score, image, answer, shuffle}){
+  shuffle.addEventListener('click', ()=> {
+    gameManager({score, image});
+  });
   answer.addEventListener('click', (e)=> {
     if (e.target instanceof HTMLLIElement){
       const currentAnswer = e.target.innerText;
       const realAnswer = quizList[currentStep].answer;
       if (currentAnswer === realAnswer){
         goNextStep(score, image);
-      }else{
+      }else {
         showModal(`나는 ${currentAnswer}이(가) 아니야!!`);
       }
     }
-  })
+  });
 }
 
 function gameManager(gameInfo) {
   initGame(gameInfo);
   attachEvent(gameInfo);
-}
 
+}
 
 window.onload = () => {
   gameManager(
@@ -96,6 +100,7 @@ window.onload = () => {
       score: $('.scoreBoard__score'),
       answer: $('ul.answer__list'),
       image: $('.imageBoard > img'),
+      shuffle: $('.buttonList__shuffle'),
     }
   );
 }
