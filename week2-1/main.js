@@ -40,7 +40,7 @@ function initGame({score, image}){
 function showModal(modalContent, keepOpen){
   const modal = $('.modal');
   const modalBody = $('p.modal__body');
-  //심화과제 2번 구현사항
+  //심화과제 2번 구현
   modal.addEventListener('click', () => {modal.classList.add('hide')}); 
   modalBody.innerHTML = modalContent;
   modal.classList.remove('hide');
@@ -62,7 +62,7 @@ function goNextStep(score, image){
   $('.scoreBoard').classList.remove('scored');
   currentStep++;
   score.innerText = +score.innerText + 1;
-  $('.scoreBoard').classList.add('scored');
+  $('.scoreBoard').classList.add('scored'); // 심화과제 3번 구현
   if(currentStep === quizList.length){
     showModal(`
     <a href="/">메인화면으로</a>
@@ -74,7 +74,7 @@ function goNextStep(score, image){
 }
 
 function attachEvent({score, image, answer, shuffle}){
-  shuffle.addEventListener('click', ()=> {
+  shuffle.addEventListener('click', ()=> {// 다시하기 버튼 기능 구현
     gameManager({score, image});
   });
   answer.addEventListener('click', (e)=> {
