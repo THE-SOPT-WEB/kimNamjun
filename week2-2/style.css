@@ -11,6 +11,11 @@
     transform : rotate(0.04deg); /* 윈도우os 폰트 안티얼라이싱*/
   }
 
+  a{
+    text-decoration: none;
+    color :black;
+  }
+
   header{
     position: relative;
     width: 100%;
@@ -115,7 +120,7 @@ main{
   align-items: center;
 }
 
-.cart__btn{
+.cart__btn--group > button {
   border: none;
   border-radius: 10px;
   width:85%;
@@ -154,7 +159,39 @@ main{
   font-size: small;
 }
 
+.modal__background{
+  position: fixed;
+  top:0;
+  left: 0; 
+  bottom: 0; 
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
 
+.modal__box{
+  position: absolute;
+  top: calc(50vh - 100px); 
+  left: calc(50vw - 200px);
+  color:black;
+  text-align: center;
+  width: 400px;
+  height: 300px;
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.modal__content{
+  width: 85%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+}
+
+.hide {
+  display: none;
+}
 
 @media screen and (max-width:1200px){
     .brand__content{
@@ -198,7 +235,6 @@ main{
     grid-template-rows: 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px 140px;
     grid-gap: 20px;
   }
-
 }  
 
 @media screen and (max-width:600px){

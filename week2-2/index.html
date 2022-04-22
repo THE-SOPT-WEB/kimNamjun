@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./favicon-32x32.png" />
@@ -175,8 +175,8 @@
           <hr>
         </div>
         <div class="cart__btn--group">
-            <button class="cart__btn">주문하기</button>
-            <button class="cart__btn">비우기</button>
+            <button class="cart__btn order">주문하기</button>
+            <button class="cart__btn resetCart">비울래요</button>
         </div>
       </section>
       <div class="btn__floating"><!--플로팅버튼(FloatingButton)-->
@@ -185,5 +185,22 @@
         </i>
       </div> 
     </main>
+    <div class="modal__background hide">
+      <div class="modal__box">
+        <div class="modal__title">
+          <h2>주소를 확인해주세요</h2> 
+        </div>
+        <div class="modal__content">
+          <p> 배달 주소 : 당신의 마음속 </p>
+          <p> 예상시간 : 1초</p>
+          <h3>$ 0 </h3>
+        </div>
+        <div class="cart__btn--group">
+          <button class="cart__btn order"><a href="./orderComplate.html">결제하기</a></button>
+          <button class="cart__btn cancel">다시담을래요</button>
+        </div>
+      </div>
+    </div>
   </body>
+  <script src="./main.js"></script>
 </html>
