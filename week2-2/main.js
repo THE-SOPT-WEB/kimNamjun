@@ -9,7 +9,7 @@ let addedItem = [];
 
 //-------------------------------------------------
 
-//카트 기능 구현
+//과제 레퍼런스 1번 - 카트 기능 구현
 function addItemToCart(selectedItem, selectedItemName) {
     const itemPrice = selectedItem.querySelector("p.burger__price").innerText;
     const cartItem = document.createElement("div");
@@ -21,7 +21,7 @@ function addItemToCart(selectedItem, selectedItemName) {
     `;
     cartItems.appendChild(cartItem);
     cartItem.querySelector('.cart__selected-removeBtn').addEventListener("click", e => removeItem(e));
-    //과제 레퍼런스 5번 - 삭제버튼 기능 구현
+    //과제 레퍼런스 3번 - 삭제버튼 기능 구현
 }
 //아이템 클릭시 이벤트
 function selectItem(e){
