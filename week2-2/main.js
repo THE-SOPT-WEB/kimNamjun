@@ -49,7 +49,17 @@ function quantityPlus(selectedItemName) {
 
 function attachClickEvent() { //과제 레퍼런스 1번 - 장바구니 요소 추가
     const itemCard = $$(".burger__card");
+    const resetCart = $('.resetCart');
     itemCard.forEach( itemCard => itemCard.addEventListener("click", (e) => selectItem(e)));
+    resetCart.addEventListener("click",() => removeAll(cartItems)); 
+}
+
+//과제 레퍼런스 5 번 - 비우기 버튼 클릭시 전부 비우기
+function removeAll(cartItems){ 
+    const allItems = $$('.cart__seleted-item');
+    allItems.forEach((cartItem)=>{
+        cartItems.remove(cartItem);
+    });
 }
 
 //모달 열기
