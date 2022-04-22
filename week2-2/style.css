@@ -105,7 +105,7 @@ main{
 
 .cart{
   width: 300px;
-  height: 300px;
+  height:fit-content;
   position: sticky;
   top: 20px;
 }
@@ -127,6 +127,12 @@ main{
   height: 50px;
   margin: 5px 0 6px 0;
   font-size:20px;
+}
+
+.cart__seleced-item{
+  display:flex;
+  align-items: center;
+  align-content: stretch;
 }
 
 .btn__floating {

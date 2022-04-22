@@ -7,29 +7,72 @@ const parsePriceToNumber = (price) => {
 };
 
 const burgerItem = $('.burger__card');
-const orderBtn = $('.order');
-const cancelBtn = $('.cancel');
+const cartItems = $('.cart__item');
 const modal = $('.modal__background');
 
-let myItems = [];
+let addedItem = [];
 
 //-------------------------------------------------
+//카트 기능 구현
+function addItemToCart(selectedItem, selectedItemName) {
+    const itemPrice = selectedItem.querySelector("p.burger__price").innerText;
+    const cartItem = document.createElement("div");
+    cartItem.classList.add("cart__seleted-item");
+    cartItem.innerHTML = `<h2>${selectedItemName}</h2>
+    <input type="number" value="1" min="1" class="${selectedItemName}-amount"/>
+    <p>${itemPrice}</p>
+    <button type="button" class='cart__selected-removeBtn'>삭제</button>
+    `;
+    cartItems.appendChild(cartItem);
+    cartItem.querySelector('.cart__selected-removeBtn').addEventListener("click", e => removeItem(e));
+    //과제 레퍼런스 5번 - 삭제버튼 기능 구현
+}
+//아이템 클릭시 이벤트
+function selectItem(e){
+    const selectedItem = e.target.closest('.burger__card'); 
+    const selectedItemName = selectedItem.querySelector('h3.burger__name').innerText;
+    if ( !(addedItem.includes(selectedItemName)) ) { // 과제 레퍼런스 2번 - 기선택시 수량만 증가
+        addedItem.push(selectedItemName);
+        addItemToCart(selectedItem, selectedItemName);
+    } else {
+        quantityPlus(selectedItemName);
+    };
+}
+// 삭제 기능 구현
+function removeItem(e) { 
+    e.currentTarget.closest("div").remove();
+}
+//수량 증가 기능
+function quantityPlus(selectedItemName) {
+    $(`.${selectedItemName}-amount`).value++;
+}
 
+function attachClickEvent() { //과제 레퍼런스 1번 - 장바구니 요소 추가
+    const itemCard = $$(".burger__card");
+    itemCard.forEach( itemCard => itemCard.addEventListener("click", (e) => selectItem(e)));
+}
 
-
-//6번 과제 레퍼런스
-function closeModal() {
+//모달 열기
+function openModal(){
     modal.classList.remove('hide');
 }
 
-function openModal(){
+//모달 닫기
+function closeModal() {
     modal.classList.add('hide');
 }
 
-orderBtn.addEventListener('click',()=>{
-    closeModal();
-})
+//과제 레퍼런스 6번 - 모달 세팅
+function attachModalEvent (){
+    const order = $('.order');
+    const cancel = $('.cancel');
+    order.addEventListener('click', openModal);
+    cancel.addEventListener('click', closeModal);
+}
 
-cancelBtn.addEventListener('click',()=>{
-    openModal();
-})
+function systemInit () {
+    attachModalEvent();
+    attachClickEvent();
+}
+
+systemInit();
