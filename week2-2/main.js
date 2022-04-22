@@ -1,11 +1,6 @@
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
 
-const parsePriceToNumber = (price) => {
-    const removedComma = price.slice(0, -1).replace(/\D/g, "");
-    return +removedComma;
-};
-
 const burgerItem = $('.burger__card');
 const cartItems = $('.cart__item');
 const modal = $('.modal__background');
@@ -13,14 +8,15 @@ const modal = $('.modal__background');
 let addedItem = [];
 
 //-------------------------------------------------
+
 //카트 기능 구현
 function addItemToCart(selectedItem, selectedItemName) {
     const itemPrice = selectedItem.querySelector("p.burger__price").innerText;
     const cartItem = document.createElement("div");
     cartItem.classList.add("cart__seleted-item");
     cartItem.innerHTML = `<h2>${selectedItemName}</h2>
-    <input type="number" value="1" min="1" class="${selectedItemName}-amount"/>
-    <p>${itemPrice}</p>
+    <input type="number" value="1" min="1" class="${selectedItemName}-amount cart-amount"/>
+    <p class='cart__seleted-item-price'>${itemPrice}</p>
     <button type="button" class='cart__selected-removeBtn'>삭제</button>
     `;
     cartItems.appendChild(cartItem);
@@ -37,6 +33,7 @@ function selectItem(e){
     } else {
         quantityPlus(selectedItemName);
     };
+    getTotalPrice()
 }
 // 삭제 기능 구현
 function removeItem(e) { 
@@ -46,20 +43,38 @@ function removeItem(e) {
 function quantityPlus(selectedItemName) {
     $(`.${selectedItemName}-amount`).value++;
 }
+//가격 파싱 기능
+const parsePriceToNumber = (price) => {
+    const removedComma = price.slice(0, -1).replace(/\D/g, "");
+    return +removedComma;
+};
+//과제 레퍼런스 4번 - 가격 총합 얻기
+function getTotalPrice(){
+    let totalPrice = 0;
+    const itemsInCart = $$('.cart__seleted-item');
+    itemsInCart.forEach((item)=>{
+        const price = parsePriceToNumber(item.querySelector('.cart__seleted-item-price').innerText);
+        const amount = item.querySelector('.cart-amount').value;
+        totalPrice += amount * price;
+    });
+
+    $('p.totalPrice').innerText = `${totalPrice}원`;
+}
 
 function attachClickEvent() { //과제 레퍼런스 1번 - 장바구니 요소 추가
     const itemCard = $$(".burger__card");
     const resetCart = $('.resetCart');
     itemCard.forEach( itemCard => itemCard.addEventListener("click", (e) => selectItem(e)));
-    resetCart.addEventListener("click",() => removeAll(cartItems)); 
+    resetCart.addEventListener("click",() => removeAllitemsInCart(cartItems)); 
 }
 
 //과제 레퍼런스 5 번 - 비우기 버튼 클릭시 전부 비우기
-function removeAll(cartItems){ 
+function removeAllitemsInCart(cartItems){ 
     const allItems = $$('.cart__seleted-item');
     allItems.forEach((cartItem)=>{
         cartItems.remove(cartItem);
     });
+    getTotalPrice();
 }
 
 //모달 열기
