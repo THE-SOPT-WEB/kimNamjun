@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { MainStyledBox } from './style';
 
-const players = [
+const items = [
 {
     id : 1,
     name :"케빈 데 브라이너",
@@ -71,27 +71,31 @@ const players = [
 ]
 
 const Game = () => {
-    const [candidates, setCandidates] = ([]);
-    const [nominatedPlayer, setNominatedPlayer] = ([]);
-    const [winner, setWinner ] = ([]);
+    const [players, setPlayers] = useState([]);
+    const [nominees, setNominees] = useState([]);
+
+    useEffect(() => {
+        items.sort( () => Math.random() - 0.5 );
+        if (items){     
+            setPlayers(items);
+            setNominees([items[0], items[1]]);
+        }
+    }, []);
 
     return (
         <MainStyledBox>
             <h1 className='game__title'>유럽축구 21/22 시즌 올해의 선수는?</h1>
-            <div className='game__content' >
-                <div className='game__content__name'>{players[3].name}<hr></hr>
-                    <p className='game__content__info'>{players[3].info}</p>
-                <p className='game__content__info'>{players[3].score}</p>
-                </div>
-                <img className="game__content__img" src={players[3].src} alt={players[3].name}/>
-            </div>
-            <div className='game__content' >
-                <div className='game__content__name'>{players[7].name}<hr></hr>
-                <p className='game__content__info'>{players[7].info}</p>
-                <p className='game__content__info'>{players[7].score}</p>
-                </div>
-                <img className="game__content__img" src={players[7].src} alt={players[7].name}/>
-            </div>
+            {nominees && nominees.map( n => {
+                return (
+                    <div className='game__content' key={n.id}>
+                        <div className='game__content__name'>{n.name}<hr></hr>
+                            <p className='game__content__info'>{n.info}</p>
+                            <p className='game__content__info'>{n.score}</p>
+                        </div>
+                        <img className="game__content__img" src={n.src} alt={n.name}/>
+                    </div>
+                )
+            })};
         </MainStyledBox>
     );
 }

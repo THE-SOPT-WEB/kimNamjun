@@ -34,15 +34,15 @@ export const MainStyledBox = styled.div`
         position: absolute;
         z-index: 3;
         color: #fff;
-        bottom: 20%;
-        font-size:60px;
+        bottom: 15%;
+        font-size:50px;
         left: 50%;
         text-align: center;
         transform: translateX(-50%);
     }
 
     .game__content__info{
-        font-size: 35px;
+        font-size: 32px;
     }
 
 `
