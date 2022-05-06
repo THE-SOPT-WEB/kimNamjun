@@ -24,7 +24,7 @@ export const MainStyledBox = styled.div`
         width: 100%;
         height: 100%;
         cursor: pointer;
-        transition: 0.5s;
+        transition: all 0.5s;
         &:hover{
             transform:scale(1.1);
             opacity: 0.7;
@@ -35,15 +35,39 @@ export const MainStyledBox = styled.div`
         z-index: 3;
         color: #fff;
         bottom: 15%;
-        font-size:50px;
+        font-size:60px;
         left: 50%;
         text-align: center;
         transform: translateX(-50%);
     }
 
     .game__content__info{
-        font-size: 32px;
+        font-size: 1.5rem;
     }
-
+    .game__content__reset{
+        position: absolute;
+        font-size: 35px;
+        background-color: white;
+        bottom: 5%;
+        right: 3%;
+        padding: 0px 10px;
+        cursor: pointer;
+        border-radius:15px;
+        transition: all 0.5s;
+        &:hover{
+            transform:scale(1.1);
+        }
+    }
+    .game__content__round{
+        position: absolute;
+        font-size:50px;
+        background-color: white;
+        bottom: 0;
+        right: 50%;
+        padding: 0px 10px;
+        cursor: pointer;
+        border-radius:15px 15px 0 0;
+        transform: translateX(50%);
+    }
 `
 
