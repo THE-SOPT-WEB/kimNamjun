@@ -92,7 +92,7 @@ const Game = () => {
             }else {// 라운드의 승자가 한명이라도 있을 경우(= 8강, 4강의 마지막 경기일 경우)
                 let wonPlayers = [...winners,roundWinner]; // 이전 라운드에서 진출한 선수만 모은 새로운 배열을 만들어준다.
                 setPlayers(wonPlayers); // 이렇게 승자만 모은 배열을 Players에 새로 담는다.
-                setNominees([wonPlayers[0],wonPlayers[1]]); // 승리한 선수들의 배열에서 인덱스 상위 2개를 출력한다. 
+                setNominees([wonPlayers[0],wonPlayers[1]]); // 승리한 선수들의 새 배열에서 인덱스 상위 2개를 출력한다. 
                 setWinners([]); // 승자만 모아놓은 배열을 초기화 하고 다음라운드에 진출한다.
                 setStage(stage/2);//다음 라운드를 저장한다.
             }
@@ -120,7 +120,7 @@ const Game = () => {
             <div className="crown">{nominees.length === 1 ? "👑"  : null }</div> {/* 기본과제 3번 */}
             <div className='game__content__shortReview'>{nominees.length === 1 ? `${nominees[0].review}` : null}</div>
             <div className='game__content__round'>{stage === 2 && nominees.length !== 1 ? `결승` : nominees.length === 1 ? `우승자는!!` : `${stage}강-${winners.length+1}경기`} </div>
-            {/*  심화과제 2번(새로고침) */}
+            {/* 심화과제 2번(새로고침), 위에 조잡한 삼항연산자 코드는 급해서 썼어요 고칠게요ㅠ */}
             <Link to="/"> 
                 <button className='game__content__reset'>🔄</button> 
             </Link> 
