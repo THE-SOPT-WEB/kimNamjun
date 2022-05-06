@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const MainStyledBox = styled.div`
+export const GameStyledBox = styled.div`
     display: flex;
     flex-wrap: wrap;
     height: 100vh;

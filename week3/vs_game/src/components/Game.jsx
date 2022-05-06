@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { MainStyledBox } from './style';
+import { GameStyledBox } from './GameStyle';
 
 const items = [
 {
@@ -85,9 +85,9 @@ const Game = () => {
     }, []);
 
     const PickPlayer = roundWinner => () => { //클릭시 이벤트 핸들러, 클릭한 플레이어를 함수로 전달해서 배열을 재구성한다.
-        if(players.length <= 2){ // 해당 라운드의 마지막 경기이면서,
-            if(winners.length === 0){  // 승자가 한명도 정해지지 않았을 경우에는(= 즉 결승일 경우)
-                setNominees([roundWinner]); // 게임의 최종 승자가 출력된다. (nominee를 출력하니깐)
+        if(players.length <= 2){ // 남은 선수가 2명 이하이면서
+            if(winners.length === 0){  // 라운드의 승자가 한명도 정해지지 않았을 경우에는(= 즉 결승일 경우)
+                setNominees([roundWinner]); // 게임의 최종 승자가 출력된다. (nominees를 출력하니깐)
             }else {// 라운드의 승자가 한명이라도 있을 경우(= 8강, 4강의 마지막 경기일 경우)
                 let wonPlayers = [...winners,roundWinner]; // 이전 라운드에서 진출한 선수만 모은 새로운 배열을 만들어준다.
                 setPlayers(wonPlayers); // 이렇게 승자만 모은 배열을 Players에 새로 담는다.
@@ -98,12 +98,12 @@ const Game = () => {
         } else if(players.length > 2){// 8강, 4강의 마지막 경기가 아닐 경우에는
             setWinners([...winners, roundWinner]); // 해당 라운드의 승자를 winner state의 winner 배열에 추가한다.
             setNominees([players[2],players[3]]);// 다음 대진표의 플레이어를 불러오고,
-            setPlayers(players.slice(2)); // 배열에서 이미 고른 선수 두 명을 제거한다.
+            setPlayers(players.slice(2)); // 기존배열에서 이미 고른 선수 두 명을 제거한다.
         }
     }
 
     return (
-        <MainStyledBox>
+        <GameStyledBox>
             <h2 className='game__title'>유럽축구 21/22 시즌 올해의 선수는?</h2>
             {nominees && nominees.map( n => {
                 return (
@@ -118,7 +118,7 @@ const Game = () => {
             })};
             <div className='game__content__round'>{stage === 2 ? `결승` :`${stage}강-${winners.length+1}경기`} </div>
             <div className='game__content__reset'>다시하기</div>
-        </MainStyledBox>
+        </GameStyledBox>
     );
 }
 
