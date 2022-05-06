@@ -10,6 +10,7 @@ export const GameStyledBox = styled.div`
         top: 0;
         left: 50%;
         transform: translateX(-50%);
+        border-radius: 0 0 15px 15px;
         background-color: #fff;
         padding: 0 30px;
     }
@@ -35,7 +36,7 @@ export const GameStyledBox = styled.div`
         z-index: 3;
         color: #fff;
         bottom: 15%;
-        font-size:40px;
+        font-size:50px;
         left: 50%;
         text-align: center;
         transform: translateX(-50%);
@@ -83,7 +84,7 @@ export const GameStyledBox = styled.div`
     .crown{
         position: absolute;
         font-size:35px;
-        bottom: 30%;
+        bottom: 32%;
         right: 50%;
         transform: translateX(50%);
     }

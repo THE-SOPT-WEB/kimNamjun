@@ -119,7 +119,7 @@ const Game = () => {
             })};
             <div className="crown">{nominees.length === 1 ? "👑"  : null }</div> {/* 기본과제 3번 */}
             <div className='game__content__shortReview'>{nominees.length === 1 ? `${nominees[0].review}` : null}</div>
-            <div className='game__content__round'>{stage === 2 ? `결승` :`${stage}강-${winners.length+1}경기`} </div>
+            <div className='game__content__round'>{stage === 2 && nominees.length !== 1 ? `결승` : nominees.length === 1 ? `우승자는!!` : `${stage}강-${winners.length+1}경기`} </div>
             {/*  심화과제 2번(새로고침) */}
             <Link to="/"> 
                 <button className='game__content__reset'>🔄</button> 
