@@ -35,14 +35,24 @@ export const GameStyledBox = styled.div`
         z-index: 3;
         color: #fff;
         bottom: 15%;
-        font-size:60px;
+        font-size:40px;
         left: 50%;
         text-align: center;
         transform: translateX(-50%);
     }
 
+    .game__content__shortReview{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0 30px;
+        font-size: 40px;
+        color: #fff;
+    }
+
     .game__content__info{
-        font-size: 1.5rem;
+        font-size: 25px;
     }
     .game__content__reset{
         position: absolute;
@@ -60,13 +70,21 @@ export const GameStyledBox = styled.div`
     }
     .game__content__round{
         position: absolute;
-        font-size:50px;
+        font-size:40px;
         background-color: white;
         bottom: 0;
         right: 50%;
         padding: 0px 10px;
         cursor: pointer;
         border-radius:15px 15px 0 0;
+        transform: translateX(50%);
+    }
+
+    .crown{
+        position: absolute;
+        font-size:35px;
+        bottom: 30%;
+        right: 50%;
         transform: translateX(50%);
     }
 `

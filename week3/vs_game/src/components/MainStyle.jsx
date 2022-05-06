@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const MainStyleBox = styled.div`
+export const HomeStyleBox = styled.div`
     
 
 `

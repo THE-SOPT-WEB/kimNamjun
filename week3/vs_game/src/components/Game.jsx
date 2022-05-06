@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import { GameStyledBox } from './GameStyle';
 
 const items = [
@@ -7,7 +8,7 @@ const items = [
     name :"케빈 데 브라이너",
     src : require("../img/데브라이너.jpeg"),
     score : "26경기 11골 6도움",
-    role : '공격형 미드필더',
+    review : "맨시티의 핵심선수이자 월드클래스 미드필더!",
     info : '30세 벨기에 맨체스터시티'
 
 },
@@ -16,7 +17,7 @@ const items = [
     name :"킬리안 음바페",
     src : require("../img/음바페.jpg"),
     score : "32경기 24골 15도움",
-    role : '스트라이커',
+    review : "메시, 호날두를 이을 차세대 월드클래스!!",
     info : '23세 프랑스 파리생제르망'
 },
 {
@@ -24,7 +25,7 @@ const items = [
     name :"모하메드 살라",
     src : require("../img/살라.jpeg"),
     score : "32경기 22골 13도움",
-    role : "윙어",
+    review : "이집트의 국민 영웅 살라!!",
     info : "30세 이집트 리버풀"
 },
 {
@@ -32,7 +33,7 @@ const items = [
     name :"카림 벤제마",
     src : require("../img/벤제마.jpg"),
     score : "30경기 26골 11도움",
-    role : "스트라이커",
+    review : "이번시즌 발롱도르 수상 1순위!!",
     info : "34세 프랑스 레알마드리드"
 },
 {
@@ -40,7 +41,7 @@ const items = [
     name :"사디오 마네",
     src : require("../img/마네.jpeg"),
     score : "31경기 14골 2도움",
-    role : "윙어",
+    review : "세네갈의 국민영웅!!",
     info : "30세 세네갈 리버풀"
 },
 {
@@ -48,7 +49,7 @@ const items = [
     name :"리오넬 메시",
     src : require("../img/리오넬메시.jpeg"),
     score : "23경기 4골 13도움",
-    role : "윙어",
+    review : "설명이 필요없는 레전드",
     info : "34세 아르헨티나 파리생제르망"
 },
 {
@@ -56,7 +57,7 @@ const items = [
     name :"크리스티아누 호날두",
     src : require("../img/호날두.jpeg"),
     score : "29경기 18골 3도움",
-    role : "스트라이커",
+    review : "킹갓두는 말할 필요가 없죠?",
     info : "37세 포르투갈 맨유"
 },
 {
@@ -64,7 +65,7 @@ const items = [
     name :"로베르트 레반도프스키",
     src : require("../img/레반도프스키.jpeg"),
     score : "32경기 34골 2도움",
-    role : "스트라이커",
+    review : "폴란드산 득점기계",
     info : "33세 폴란드 바이에른뮌헨"
 },
 
@@ -104,7 +105,7 @@ const Game = () => {
 
     return (
         <GameStyledBox>
-            <h2 className='game__title'>유럽축구 21/22 시즌 올해의 선수는?</h2>
+            <h1 className='game__title'>유럽축구 21/22 시즌 올해의 선수는?</h1>
             {nominees && nominees.map( n => {
                 return (
                     <div className='game__content' key={n.id} onClick={PickPlayer(n)}>
@@ -116,8 +117,14 @@ const Game = () => {
                     </div>
                 )
             })};
+            <div className="crown">{nominees.length === 1 ? "👑"  : null }</div> {/* 기본과제 3번 */}
+            <div className='game__content__shortReview'>{nominees.length === 1 ? `${nominees[0].review}` : null}</div>
             <div className='game__content__round'>{stage === 2 ? `결승` :`${stage}강-${winners.length+1}경기`} </div>
-            <div className='game__content__reset'>다시하기</div>
+            {/*  심화과제 2번(새로고침) */}
+            <Link to="/"> 
+                <button className='game__content__reset'>🔄</button> 
+            </Link> 
+
         </GameStyledBox>
     );
 }
