@@ -71,7 +71,7 @@ const CheckBox = styled.div`
   color: #495057;
 `
 
-const SmallCheckButton = styled.div`
+const SmallCircleButton = styled.div`
   &:hover {
     border: 1px solid #38d9a9;
     color:#38d9a9;
@@ -120,9 +120,9 @@ function Search() {
       </CircleButton>
       <CheckBox>
         <p> 내위치 기준 검색</p>
-        <SmallCheckButton onClick={onToggle} checked={ checked ? true : false }>
+        <SmallCircleButton onClick={onToggle} checked={checked}>
           <MdDone/>
-        </SmallCheckButton>
+        </SmallCircleButton>
       </CheckBox>
 
     </>

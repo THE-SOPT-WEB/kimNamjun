@@ -16,7 +16,6 @@ function List() {
   return (
     <ListBlock>
       <SkeletonItem/>
-      <Item title="봉구비어 보라매점" adress='당곡 6길 65' contact='010-4580-7180'/>
     </ListBlock>
   );
 }
