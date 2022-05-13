@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styled, {css} from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
 import { MdDone } from 'react-icons/md';
-import { useLocationDispatch, useLocationNextId } from './Context';
+import { useLocationDispatch } from './Context';
 
 const CircleButton = styled.button`
   background: #38d9a9;
@@ -105,40 +105,16 @@ const SmallCheckButton = styled.div`
 
 function Search() {
   const [checked, setChecked] = useState(false);
-  const [value, setValue] = useState('');
   const Check = () => setChecked(!checked);
-
-  const dispatch = useLocationDispatch();
-  const nextId = useLocationNextId();
-  const onChange = e => setValue(e.target.value);
-  const onSubmit = e => {
-    e.preventDefault();
-    dispatch({ 
-      type:"SEARCH",
-      location: {
-        id : nextId.current,
-        title: value,
-        adress: '당곡 6길 65',
-        contact : '010-4580-7180'
-      }
-    });
-    setValue('');
-    nextId.current += 1;
-  }
 
   return (
     <>
         <InsertFormPositioner>
           <InsertForm>
-            <Input 
-            autoFocus 
-            placeholder="검색할 지역을 입력해주세요(ex.홍대, 왕십리, 신림)" 
-            onChange={onChange}
-            value={value}
-            disabled={checked ? true : false } />
+            <Input autoFocus placeholder="검색할 지역을 입력해주세요(ex.홍대, 왕십리, 신림)" disabled={checked ? true : false } />
           </InsertForm>
         </InsertFormPositioner>
-      <CircleButton onClick={onSubmit}>
+      <CircleButton>
         <FaSearch/>
       </CircleButton>
       <CheckBox>
@@ -152,4 +128,4 @@ function Search() {
   );
 }
 
-export default React.memo(Search);
+export default Search;

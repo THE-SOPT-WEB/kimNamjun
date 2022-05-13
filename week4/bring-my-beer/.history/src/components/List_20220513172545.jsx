@@ -16,15 +16,8 @@ function List() {
 
   return (
     <ListBlock>
-      {Locations.map( location => (
-          <Item
-            key={location.id}
-            id={location.id}
-            title={location.title}
-            adress={location.adress}
-            contact={location.contact}
-          />
-      ))}
+      <SkeletonItem/>
+      <Item title="봉구비어 보라매점" adress='당곡 6길 65' contact='010-4580-7180'/>
     </ListBlock>
   );
 }

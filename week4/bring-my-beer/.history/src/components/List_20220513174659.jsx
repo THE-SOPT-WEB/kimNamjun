@@ -20,9 +20,9 @@ function List() {
           <Item
             key={location.id}
             id={location.id}
-            title={location.title}
-            adress={location.adress}
-            contact={location.contact}
+            id={location.title}
+            id={location.text}
+            id={location.contact}
           />
       ))}
     </ListBlock>

@@ -110,7 +110,7 @@ function Search() {
 
   const dispatch = useLocationDispatch();
   const nextId = useLocationNextId();
-  const onChange = e => setValue(e.target.value);
+
   const onSubmit = e => {
     e.preventDefault();
     dispatch({ 
@@ -130,12 +130,7 @@ function Search() {
     <>
         <InsertFormPositioner>
           <InsertForm>
-            <Input 
-            autoFocus 
-            placeholder="검색할 지역을 입력해주세요(ex.홍대, 왕십리, 신림)" 
-            onChange={onChange}
-            value={value}
-            disabled={checked ? true : false } />
+            <Input autoFocus placeholder="검색할 지역을 입력해주세요(ex.홍대, 왕십리, 신림)" disabled={checked ? true : false } />
           </InsertForm>
         </InsertFormPositioner>
       <CircleButton onClick={onSubmit}>
@@ -152,4 +147,4 @@ function Search() {
   );
 }
 
-export default React.memo(Search);
+export default Search;

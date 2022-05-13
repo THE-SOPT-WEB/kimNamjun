@@ -4,7 +4,7 @@ import Template from './components/Template';
 import Header from './components/Header';
 import List from './components/List';
 import Search from './components/Search';
-import { LocationProvider } from './components/Context';
+import { LocationProvider } from './Context';
 import SkeletonItem from './components/SkeletonItem';
 
 
