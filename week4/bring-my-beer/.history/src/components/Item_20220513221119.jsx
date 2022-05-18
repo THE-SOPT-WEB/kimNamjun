@@ -1,5 +1,6 @@
 import React from 'react';
 import styled  from 'styled-components';
+import { useLocationState, useLocationDispatch, getLocation, getNearbybeers, } from './Context';
 import { BiBeer } from 'react-icons/bi';
 
 const ItemBlock = styled.div`
@@ -46,17 +47,22 @@ const  Contact = styled.div`
 `
 
 function Item({ title,adress,contact }) {
+
+    const state = useLocationState();
+    const dispatch = useLocationDispatch();
+
+    const { data: locations, loading, error } = state.locations;
   return (
     <ItemBlock>
       <Icon >
         <BiBeer />
       </Icon>
-      <Title >{title}
-        <Adress>{adress}</Adress>
+      <Title >{locations.place_name}
+        <Adress>{locations.road_address_name}</Adress>
       </Title>
-      <Contact>{contact}</Contact>
+      <Contact>{locations.phone}</Contact>
     </ItemBlock>
   );
 }
 
-export default Item;
+export default React.memo(Item);

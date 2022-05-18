@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import styled, {css} from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
 import { MdDone } from 'react-icons/md';
+import { useLocationDispatch, useLocationState, useLocationNextId, getLocation, getMyLocation ,getNearbybeers } from './Context';
 
 const CircleButton = styled.button`
   background: #38d9a9;
@@ -103,24 +104,55 @@ const SmallCheckButton = styled.div`
 `
 
 function Search() {
-
   const [checked, setChecked] = useState(false);
+  const [value, setValue] = useState('');
+  const Check = () => setChecked(!checked);
 
-  const onToggle = () => setChecked(!checked);
+  const state = useLocationState();
+  const dispatch = useLocationDispatch();
+
+  const { data: users, loading, error } = state.locations;
+  const fetchData = (e) => {
+    e.preventDefault();
+    getLocation(dispatch);
+    getNearbybeers(dispatch);
+    console.log(state.locations)
+  };
+  // const nextId = useLocationNextId();
+  const onChange = e => setValue(e.target.value);
+  // // const onSubmit = e => {
+  // //   e.preventDefault();
+  // //   dispatch({ 
+  // //     type:"SEARCH",
+  // //     location: {
+  // //       id : nextId.current,
+  // //       title: value,
+  // //       adress: '당곡 6길 65',
+  // //       contact : '010-4580-7180'
+  // //     }
+  // //   });
+  // //   setValue('');
+  // //   nextId.current += 1;
+  // // }
 
   return (
     <>
         <InsertFormPositioner>
           <InsertForm>
-            <Input autoFocus placeholder="검색할 지역을 입력해주세요(ex.홍대, 왕십리, 신림)" disabled={checked ? true : false } />
+            <Input 
+            autoFocus 
+            placeholder="검색할 지역을 입력해주세요(ex.홍대, 왕십리, 신림)" 
+            onChange={onChange}
+            value={value}
+            disabled={checked ? true : false } />
           </InsertForm>
         </InsertFormPositioner>
-      <CircleButton>
+      <CircleButton onClick={fetchData}>
         <FaSearch/>
       </CircleButton>
       <CheckBox>
         <p> 내위치 기준 검색</p>
-        <SmallCheckButton onClick={onToggle} checked={ checked ? true : false }>
+        <SmallCheckButton onClick={Check} checked={ checked ? true : false }>
           <MdDone/>
         </SmallCheckButton>
       </CheckBox>
@@ -129,4 +161,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default React.memo(Search);
